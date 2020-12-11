@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head :: header"></head>
+
+<body>
+
+<div class="dashboard-main-wrapper">
+
+    <div th:replace="/fragments/header :: header"></div>
+
+    <div th:replace="/fragments/left-sidebar :: left-sidebar"></div>
+
+    <div class="dashboard-wrapper">
+
+        <div class="dashboard-ecommerce">
+
+            <div class="container-fluid dashboard-content">
+
+                <div class="ecommerce-widget">
+
+                    <div class="row">
+
+                        <div class="col-lg-6 col-md-12">
+
+                            <section class="panel panel-transparent">
+                                <header class="panel-heading">
+                                    <h2 class="panel-title">User Create</h2>
+                                </header>
+
+                                <div class="panel-body">
+
+                                    <!-- ------------------------FORM START----------------------------- -->
+                                    <form class="needs-validation" novalidate th:action="@{user/create}" method="post">
+                                        <div class="row">
+
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="firstname" class="col-form-label">First Name</label>
+                                                    <input id="firstname" type="text" placeholder="first name" class="form-control" required>
+                                                    <div class="invalid-feedback">
+                                                        Enter Your First Name!
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="lastname" class="col-form-label">Last Name</label>
+                                                    <input id="lastname" type="text" placeholder="last name" class="form-control" required>
+                                                    <div class="invalid-feedback">
+                                                        Enter Your Last Name!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="emailaddress" class="col-form-label">Email Address</label>
+                                                    <input id="emailaddress" type="text" placeholder="email address" class="form-control" required>
+                                                    <div class="invalid-feedback">
+                                                        Enter Your Email Address!
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="mobileNumber" class="col-form-label">Mobile number</label>
+                                                    <input id="mobileNumber" type="tel" pattern="[0-9]{10,10}" placeholder="mobile number" class="form-control" required>
+                                                    <div class="invalid-feedback">
+                                                        Enter Your 10 Digit Phone Number!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="col-sm-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="password" class="col-form-label">Password</label>
+                                                    <input id="password" type="password" placeholder="password"
+                                                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}" class="form-control" required>
+                                                    <div class="invalid-feedback">
+                                                        Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="password-confirmation" class="col-form-label">Password Confirmation</label>
+                                                    <input id="password-confirmation" type="password" placeholder="Re-enter your password" class="form-control"
+                                                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}" required>
+                                                    <div class="invalid-feedback">
+                                                        Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Gender</label>
+                                                    <br>
+                                                    <label class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" name="radio-inline" checked="checked" class="custom-control-input">
+                                                        <span class="custom-control-label">Male</span>
+                                                    </label>
+                                                    <label class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" name="radio-inline" class="custom-control-input"><span class="custom-control-label">Female</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="input-select">Role</label>
+                                                    <select class="form-control" id="input-select">
+                                                        <option>Select</option>
+                                                    </select><br>
+                                                    <button type="submit" class="btn btn-success fa-pull-right">Save</button><br><br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!-- ------------------------FORM END----------------------------- -->
+
+                                </div>
+
+                            </section>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ------------------------TABLE START----------------------------- -->
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="col-md-12">
+                            <section class="panel">
+                                <header class="panel-heading">
+                                    <h2 class="panel-title">User List</h2>
+                                </header>
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">E-Mail(username)</th>
+                                                <th scope="col">Gender</th>
+                                                <th scope="col">Phone</th>
+                                                <th scope="col">Role</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>John Kenny</td>
+                                                <td>admin@cybertek.com</td>
+                                                <td>Male</td>
+                                                <td>78695452356</td>
+                                                <td>Admin</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning">Update</button>
+                                                    <button type="button" class="btn btn-danger">Delete</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                <td>Delisa Norre</td>
+                                                <td>T001@cybertek.com</td>
+                                                <td>Female</td>
+                                                <td>856354689435</td>
+                                                <td>Manager</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning">Update</button>
+                                                    <button type="button" class="btn btn-danger">Delete</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Craig Jark</td>
+                                                <td>P001@cybertek.com</td>
+                                                <td>Male</td>
+                                                <td>777775656666</td>
+                                                <td>Employee</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning">Update</button>
+                                                    <button type="button" class="btn btn-danger">Delete</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Shaun Hayns</td>
+                                                <td>S001@cybertek.com</td>
+                                                <td>Male</td>
+                                                <td>325649876546</td>
+                                                <td>Employee</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning">Update</button>
+                                                    <button type="button" class="btn btn-danger">Delete</button>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ------------------------TABLE END----------------------------- -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div th:replace="/fragments/footer :: footer"></div>
+
+</div>
+
+<div th:replace="/fragments/javascript :: js"></div>
+
+</body>
+
+</html>
