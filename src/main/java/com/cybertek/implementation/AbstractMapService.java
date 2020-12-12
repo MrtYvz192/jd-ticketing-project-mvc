@@ -1,0 +1,36 @@
+package com.cybertek.implementation;
+
+import com.cybertek.service.CrudService;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public abstract class AbstractMapService <T,ID> {
+
+    protected Map<ID,T> map = new HashMap<>();
+
+    T save(ID id,T object){
+       map.put(id,object);
+       return object;
+    }
+
+    List<T> findALL(){
+        return new ArrayList<>(map.values());
+    }
+
+    T findBy(ID id){
+        return map.get(id);
+    }
+
+    void deleteByID(ID id){
+        map.remove(id);
+    }
+
+    void delete(T object){
+        map.entrySet().removeIf(entry-> entry.getValue().equals(object));
+    }
+
+
+}
