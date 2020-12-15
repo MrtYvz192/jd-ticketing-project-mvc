@@ -1,6 +1,7 @@
 package com.cybertek.controller;
 
 import com.cybertek.bootstrap.DataGenerator;
+import com.cybertek.dto.RoleDTO;
 import com.cybertek.dto.UserDTO;
 import com.cybertek.implementation.RoleServiceImpl;
 import com.cybertek.implementation.UserServiceImpl;
@@ -36,8 +37,13 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public String showList(@ModelAttribute("users") List<UserDTO> userList, Model model){
-        model.addAttribute("users",userList);
+    public String insertUser(UserDTO user, Model model){
+
+        dataGenerator.userService.save(user);
+
+        model.addAttribute("user",new UserDTO());
+        model.addAttribute("roles", dataGenerator.roleService.findAll());
+        model.addAttribute("users", dataGenerator.userService.findAll());
         return "/user/create";
     }
 
