@@ -122,7 +122,7 @@
                                                     <label for="role-id">Role</label>
                                                     <select class="form-control" id="role-id" th:field="*{role}">
                                                         <option th:value="''" th:text="Select"></option>
-                                                        <option th:each="role : ${}" th:value="admin">Admin</option>
+                                                        <option th:each="role : ${roles}" th:text="${role.description}" th:value="${role.id}"></option>
 
                                                     </select><br>
                                                     <button type="submit" class="btn btn-success fa-pull-right">Save</button><br><br>
@@ -167,51 +167,18 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td>John Kenny</td>
-                                                <td>admin@cybertek.com</td>
-                                                <td>Male</td>
-                                                <td>78695452356</td>
-                                                <td>Admin</td>
+                                            <tr th:each="user : ${users}">
+                                                <td th:text="${user.firstName + ' ' + user.lastName}"></td>
+                                                <td th:text="${user.userName}"></td>
+                                                <td th:text="${user.gender.value}"></td>
+                                                <td th:text="${user.phone}"></td>
+                                                <td th:text="${user.role.description}"></td>
                                                 <td>
                                                     <button type="button" class="btn btn-warning">Update</button>
                                                     <button type="button" class="btn btn-danger">Delete</button>
                                                 </td>
                                             </tr>
-                                            <tr>
 
-                                                <td>Delisa Norre</td>
-                                                <td>T001@cybertek.com</td>
-                                                <td>Female</td>
-                                                <td>856354689435</td>
-                                                <td>Manager</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-warning">Update</button>
-                                                    <button type="button" class="btn btn-danger">Delete</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Craig Jark</td>
-                                                <td>P001@cybertek.com</td>
-                                                <td>Male</td>
-                                                <td>777775656666</td>
-                                                <td>Employee</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-warning">Update</button>
-                                                    <button type="button" class="btn btn-danger">Delete</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Shaun Hayns</td>
-                                                <td>S001@cybertek.com</td>
-                                                <td>Male</td>
-                                                <td>325649876546</td>
-                                                <td>Employee</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-warning">Update</button>
-                                                    <button type="button" class="btn btn-danger">Delete</button>
-                                                </td>
-                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>
