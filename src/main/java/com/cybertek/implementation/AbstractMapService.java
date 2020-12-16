@@ -1,5 +1,6 @@
 package com.cybertek.implementation;
 
+import com.cybertek.dto.UserDTO;
 import com.cybertek.service.CrudService;
 
 import java.util.ArrayList;
@@ -32,5 +33,9 @@ public abstract class AbstractMapService <T,ID> {
         map.entrySet().removeIf(entry-> entry.getValue().equals(object));
     }
 
+    void update(ID id,T object){
+        delete(object);
+        save(id,object);
+    }
 
 }

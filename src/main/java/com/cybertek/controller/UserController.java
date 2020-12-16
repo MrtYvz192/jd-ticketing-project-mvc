@@ -7,10 +7,7 @@ import com.cybertek.implementation.RoleServiceImpl;
 import com.cybertek.implementation.UserServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -45,6 +42,30 @@ public class UserController {
         model.addAttribute("roles", dataGenerator.roleService.findAll());
         model.addAttribute("users", dataGenerator.userService.findAll());
         return "/user/create";
+    }
+
+    @GetMapping("update/{username}")
+    public String editUser(@PathVariable("username") String username, Model model){
+
+        model.addAttribute("user", dataGenerator.userService.findBYId(username));
+        model.addAttribute("users", dataGenerator.userService.findAll());
+        model.addAttribute("roles", dataGenerator.roleService.findAll());
+
+        return "user/update";
+    }
+
+    @PostMapping("/update/{username}")
+    public String updateUser(@PathVariable("username") String username, UserDTO user, Model model){
+
+        dataGenerator.userService.update(user);
+
+        model.addAttribute("user",new UserDTO());
+        model.addAttribute("roles", dataGenerator.roleService.findAll());
+        model.addAttribute("users", dataGenerator.userService.findAll());
+
+
+
+        return "user/create";
     }
 
 }
