@@ -58,7 +58,7 @@ public class UserController {
     public String updateUser(@PathVariable("username") String username, UserDTO user, Model model){
 
         dataGenerator.userService.deleteById(username);
-        dataGenerator.userService.update(user);
+        dataGenerator.userService.update(user); // or save() can be used
 
         model.addAttribute("user",new UserDTO());
         model.addAttribute("roles", dataGenerator.roleService.findAll());
