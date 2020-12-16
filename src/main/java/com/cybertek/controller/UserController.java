@@ -26,7 +26,6 @@ public class UserController {
     @GetMapping({"/create","/add"}) //==> multiple end points can be provided inside {}
     public String createUser(Model model){
 
-
         model.addAttribute("user",new UserDTO());
         model.addAttribute("users", dataGenerator.userService.findAll());
         model.addAttribute("roles", dataGenerator.roleService.findAll());
@@ -38,10 +37,12 @@ public class UserController {
 
         dataGenerator.userService.save(user);
 
-        model.addAttribute("user",new UserDTO());
-        model.addAttribute("roles", dataGenerator.roleService.findAll());
-        model.addAttribute("users", dataGenerator.userService.findAll());
-        return "/user/create";
+//        model.addAttribute("user",new UserDTO());
+//        model.addAttribute("roles", dataGenerator.roleService.findAll());
+//        model.addAttribute("users", dataGenerator.userService.findAll());
+
+//        return "/user/create";
+        return "redirect:/user/create"; // ==> calls the method with @GetMapping that meets the path
     }
 
     @GetMapping("update/{username}")
@@ -60,13 +61,11 @@ public class UserController {
         dataGenerator.userService.deleteById(username);
         dataGenerator.userService.update(user); // or save() can be used
 
-        model.addAttribute("user",new UserDTO());
-        model.addAttribute("roles", dataGenerator.roleService.findAll());
-        model.addAttribute("users", dataGenerator.userService.findAll());
+//        model.addAttribute("user",new UserDTO());
+//        model.addAttribute("roles", dataGenerator.roleService.findAll());
+//        model.addAttribute("users", dataGenerator.userService.findAll());
 
-
-
-        return "user/create";
+        return "redirect:/user/create";
     }
 
 }
