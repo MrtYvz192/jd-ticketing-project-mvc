@@ -57,6 +57,7 @@ public class UserController {
     @PostMapping("/update/{username}")
     public String updateUser(@PathVariable("username") String username, UserDTO user, Model model){
 
+        dataGenerator.userService.deleteById(username);
         dataGenerator.userService.update(user);
 
         model.addAttribute("user",new UserDTO());
