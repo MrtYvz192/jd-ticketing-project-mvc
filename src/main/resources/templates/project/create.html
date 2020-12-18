@@ -35,13 +35,14 @@
 
                 <div class="row">
                     <div class="col-lg-6 col-sm-6">
-                        <form>
+                        <form class="needs-validation" novalidate>
                             <div class="row">
 
                                 <div class="col-xl-12 col-lg-12 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <label for="projectname" class="col-form-label">Project Name</label>
-                                        <input id="projectname" type="text" class="form-control">
+                                        <input id="projectname" type="text" class="form-control" placeholder="Project Name" required>
+                                        <div class="invalid-feedback">Please enter the project name</div>
                                     </div>
                                 </div>
 
@@ -51,7 +52,8 @@
                                 <div class="col-xl-12 col-lg-12 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <label for="projectcode" class="col-form-label">Project Code</label>
-                                        <input id="projectcode" type="text" class="form-control">
+                                        <input id="projectcode" type="text" class="form-control" placeholder="Project Code" required>
+                                        <div class="invalid-feedback">Please enter the project code</div>
                                     </div>
                                 </div>
                             </div>
@@ -60,9 +62,9 @@
                                 <div class="col-xl-12 col-lg-12 col-sm-6">
                                     <div class="form-group">
                                         <label for="input-select">Assigned Manager</label>
-                                        <select class="form-control" id="input-select">
+                                        <select class="form-control" id="input-select" required="required">
                                             <option>Select</option>
-                                        </select><br>
+                                        </select><div class="invalid-feedback">Please choose the manager</div><br>
                                     </div>
                                 </div>
                             </div>
@@ -71,17 +73,13 @@
                                 <div class="col-xl-6 col-lg-6 col-sm-6">
                                     <div class="form-group">
                                         <label for="project-start-date">Project Start Date</label>
-                                        <select class="form-control" type="date" id="project-start-date">
-                                            <option>mm/dd/yyyy</option>
-                                        </select><br>
+                                        <input class="form-control" type="date" id="project-start-date" ><br>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-sm-6">
                                     <div class="form-group">
                                         <label for="project-end-date">Project End Date</label>
-                                        <select class="form-control" type="date" id="project-end-date">
-                                            <option>mm/dd/yyyy</option>
-                                        </select><br>
+                                        <input class="form-control" type="date" id="project-end-date"><br>
                                     </div>
                                 </div>
                             </div>
@@ -89,9 +87,14 @@
                                 <div class="col-xl-12 col-lg-12 col-sm-6">
                                     <div class="form-group">
                                         <label for="project-detail">Project Detail</label>
-                                        <textarea id="project-detail" type="text" class="form-control"></textarea>
-                                        <br>
-                                        <button type="button" class="btn btn-success fa-pull-right">Save</button><br><br>
+                                        <textarea id="project-detail" type="text" class="form-control" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="float-right">
+                                        <button type="submit" class="btn btn-success rounded-0">Save</button><br><br>
                                     </div>
                                 </div>
                             </div>
