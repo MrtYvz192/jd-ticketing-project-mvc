@@ -126,12 +126,12 @@
                                     <tr th:each="project:${projects}" >
                                         <td th:text="${project.projectCode}"></td>
                                         <td th:text="${project.projectName}"></td>
-                                        <td th:text="${project.startDate + '-' + project.endDate}"></td>
+                                        <td th:text="${#temporals.format(project.startDate,'MM.dd.yyyy') + '-' + #temporals.format(project.endDate,'MM.dd.yyyy')}"></td>
                                         <td th:text="${project.assignedManager.firstName + ' ' + project.assignedManager.lastName}"></td>
                                         <td th:text="${project.projectStatus}"></td>
                                         <td>
                                             <button type="button" class="btn btn-warning btn-sm" th:text="Update">Update</button>
-                                            <button type="button" class="btn btn-danger btn-sm" th:text="Delete">Delete</button>
+                                            <a th:href="@{/project/delete/{id}(id=${project.projectCode})}"> <button type="button" class="btn btn-danger btn-sm" th:text="Delete">Delete</button></a>
                                             <button type="button" class="btn btn-info btn-sm" th:text="Complete">Complete</button>
                                         </td>
                                     </tr>
