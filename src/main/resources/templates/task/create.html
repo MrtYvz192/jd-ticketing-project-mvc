@@ -44,7 +44,7 @@
                                         <select class="form-control" id="project-select"  th:field="*{project}" required="required">
                                             <option th:value="''">Select</option>
                                             <option th:each="project:${projects}" th:value="${project.projectCode}"
-                                                    th:text="${project.projectCode + '-' + ${project.projectName}}" ></option>
+                                                    th:text="${project.projectCode + '-' + project.projectName}" ></option>
 
                                         </select><div class="invalid-feedback">Please choose the project</div><br>
                                     </div>
@@ -115,12 +115,12 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr >
-                                        <td ></td>
-                                        <td ></td>
-                                        <td ></td>
-                                        <td ></td>
-                                        <td ></td>
+                                    <tr th:each="task:${tasks}">
+                                        <td th:text="${task.project.projectCode + '-' + task.project.projectName}"></td>
+                                        <td th:text="${task.taskSubject}"></td>
+                                        <td th:text="${task.assignedEmployee.firstName + ' ' + task.assignedEmployee.lastName}"></td>
+                                        <td th:text="${#temporals.format(task.assignedDate,'MM/dd/yyyy')}"></td>
+                                        <td th:text="${task.taskStatus}"></td>
                                         <td>
                                             <a ><button type="button" class="btn btn-warning btn-sm" th:text="Update">Update</button></a>
                                             <a > <button type="button" class="btn btn-danger btn-sm" th:text="Delete">Delete</button></a>
