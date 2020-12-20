@@ -35,15 +35,16 @@
 
                 <div class="row">
                     <div class="col-lg-6 col-sm-6">
-                        <form class="needs-validation" novalidate >
+                        <form class="needs-validation" novalidate th:action="@{/task/create}" th:method="post" th:object="${task}">
 
                             <div class="row">
                                 <div class="col-xl-12 col-lg-12 col-sm-6">
                                     <div class="form-group">
                                         <label for="project-select">Project</label>
-                                        <select class="form-control" id="project-select"  required="required">
-                                            <option >Select</option>
-                                            <option ></option>
+                                        <select class="form-control" id="project-select"  th:field="*{project}" required="required">
+                                            <option th:value="''">Select</option>
+                                            <option th:each="project:${projects}" th:value="${project.projectCode}"
+                                                    th:text="${project.projectCode + '-' + ${project.projectName}}" ></option>
 
                                         </select><div class="invalid-feedback">Please choose the project</div><br>
                                     </div>
@@ -54,9 +55,10 @@
                                 <div class="col-xl-12 col-lg-12 col-sm-6">
                                     <div class="form-group">
                                         <label for="employee-select">Assigned Employee</label>
-                                        <select class="form-control" id="employee-select"  required="required">
-                                            <option >Select</option>
-                                            <option ></option>
+                                        <select class="form-control" id="employee-select"  th:field="*{assignedEmployee}" required="required">
+                                            <option th:value="''">Select</option>
+                                            <option th:each="employee :${employees}" th:value="${employee.userName}"
+                                                    th:text="${employee.firstName + ' ' + employee.lastName}"></option>
 
                                         </select><div class="invalid-feedback">Please choose the employee</div><br>
                                     </div>
@@ -67,7 +69,7 @@
                                 <div class="col-xl-12 col-lg-12 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <label for="projectcode" class="col-form-label">Task Subject</label>
-                                        <input id="projectcode" type="text" class="form-control" placeholder="Project Code" required>
+                                        <input id="projectcode" type="text" class="form-control" th:field="*{taskSubject}" placeholder="Project Code" required>
                                         <div class="invalid-feedback">Please enter the task subject</div>
                                     </div>
                                 </div>
@@ -78,7 +80,7 @@
                                 <div class="col-xl-12 col-lg-12 col-sm-6">
                                     <div class="form-group">
                                         <label for="project-detail">Detail</label>
-                                        <textarea id="project-detail" type="text" class="form-control" required ></textarea>
+                                        <textarea id="project-detail" type="text" class="form-control" th:field="*{taskDetail}" required ></textarea>
                                         <div class="invalid-feedback">Please enter the task details</div>
                                     </div>
                                 </div>
