@@ -8,30 +8,30 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TaskServiceImpl extends AbstractMapService<TaskDTO,UserDTO> implements TaskService {
+public class TaskServiceImpl extends AbstractMapService<TaskDTO,Long> implements TaskService {
     @Override
     public TaskDTO save(TaskDTO object) {
-        return null;
+        return super.save(object.getId(),object);
     }
 
     @Override
-    public TaskDTO findById(UserDTO userDTO) {
-        return null;
+    public TaskDTO findById(Long id) {
+        return super.findById(id);
     }
 
     @Override
     public List<TaskDTO> findAll() {
-        return null;
+        return super.findAll();
     }
 
     @Override
     public void delete(TaskDTO object) {
-
+        super.delete(object);
     }
 
     @Override
-    public void deleteById(UserDTO userDTO) {
-
+    public void deleteById(Long id) {
+        super.deleteById(id);
     }
 
     @Override
