@@ -4,14 +4,11 @@ import com.cybertek.dto.UserDTO;
 import com.cybertek.enums.Status;
 import com.cybertek.service.CrudService;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public abstract class AbstractMapService <T,ID> {
 
-    protected Map<ID,T> map = new HashMap<>();
+    protected Map<ID,T> map = new LinkedHashMap<>();
 
     T save(ID id,T object){
        map.put(id,object);
