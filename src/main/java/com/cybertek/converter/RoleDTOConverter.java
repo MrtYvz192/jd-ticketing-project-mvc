@@ -21,7 +21,7 @@ public class RoleDTOConverter implements Converter<String,RoleDTO> {
 
         RoleDTO object = new RoleDTO();
 
-        object = roleService.findBYId(id);
+        object = roleService.findById(id);
         return object;
     }
 }

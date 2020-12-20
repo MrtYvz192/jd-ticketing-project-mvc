@@ -18,6 +18,6 @@ public class UserDTOConverter implements Converter<String, UserDTO> {
 
     @Override
     public UserDTO convert(String s) {
-        return userService.findBYId(s);
+        return userService.findById(s);
     }
 }

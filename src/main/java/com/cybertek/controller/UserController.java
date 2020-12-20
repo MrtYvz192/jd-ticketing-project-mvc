@@ -48,7 +48,7 @@ public class UserController {
     @GetMapping("update/{username}")
     public String editUser(@PathVariable("username") String username, Model model){
 
-        model.addAttribute("user", dataGenerator.userService.findBYId(username));
+        model.addAttribute("user", dataGenerator.userService.findById(username));
         model.addAttribute("users", dataGenerator.userService.findAll());
         model.addAttribute("roles", dataGenerator.roleService.findAll());
 
