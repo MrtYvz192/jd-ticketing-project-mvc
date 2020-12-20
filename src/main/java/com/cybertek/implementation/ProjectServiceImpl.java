@@ -5,6 +5,7 @@ import com.cybertek.enums.Status;
 import com.cybertek.service.ProjectService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -26,7 +27,9 @@ public class ProjectServiceImpl extends AbstractMapService<ProjectDTO,String> im
 
     @Override
     public void update(ProjectDTO object) {
+        object.setProjectStatus(findById(object.getProjectCode()).getProjectStatus());
         super.update(object.getProjectCode(),object);
+
     }
 
     @Override
@@ -42,5 +45,6 @@ public class ProjectServiceImpl extends AbstractMapService<ProjectDTO,String> im
     @Override
     public void complete(ProjectDTO project) {
         findById(project.getProjectCode()).setProjectStatus(Status.COMPLETE);
+        findById(project.getProjectCode()).setEndDate(LocalDate.now());
     }
 }

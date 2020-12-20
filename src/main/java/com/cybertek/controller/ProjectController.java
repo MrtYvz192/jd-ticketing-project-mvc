@@ -56,6 +56,25 @@ public class ProjectController {
         return "redirect:/project/create";
     }
 
+    @GetMapping("/update/{projectcode}")
+    public String editProject(@PathVariable("projectcode") String projectCode, Model model){
+
+        model.addAttribute("project", projectService.findById(projectCode));
+        model.addAttribute("projects", projectService.findAll());
+        model.addAttribute("managers", userService.findManagers());
+
+        return "project/update";
+    }
+
+    @PostMapping("/update/{projectcode}")
+    public String updateProject(@PathVariable("projectcode") String projectcode, ProjectDTO project){
+
+        //project.setProjectStatus(projectService.findById(projectcode).getProjectStatus()); ==> can also be used in order not to lose Status data
+        projectService.update(project);
+
+        return "redirect:/project/create";
+    }
+
 
 
 }
