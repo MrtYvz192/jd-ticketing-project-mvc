@@ -103,9 +103,13 @@ public class ProjectController {
                     int completeCount = (int) tasklist.stream().filter(t-> t.getProject().equals(x) && t.getTaskStatus() == Status.COMPLETE).count();
                     int incompleteCount = (int)tasklist.stream().filter(t-> t.getProject().equals(x) && t.getTaskStatus() != Status.COMPLETE).count();
 
-                    return new ProjectDTO(x.getProjectName(),x.getProjectCode(),userService.findById(x.getAssignedManager().
-                            getUserName()),x.getStartDate(),x.getEndDate(),x.getProjectDetail(),x.getProjectStatus(),
-                            completeCount,incompleteCount);
+//                    return new ProjectDTO(x.getProjectName(),x.getProjectCode(),userService.findById(x.getAssignedManager().
+//                            getUserName()),x.getStartDate(),x.getEndDate(),x.getProjectDetail(),x.getProjectStatus(),
+//                            completeCount,incompleteCount);
+
+                    x.setUnfinishedTaskCount(incompleteCount);
+                    x.setCompleteTaskCount(completeCount);
+                    return  x;
                 }).collect(Collectors.toList());
 
         return list;
