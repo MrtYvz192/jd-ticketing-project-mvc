@@ -74,9 +74,9 @@ public class TaskController {
     @PostMapping("/update/{id}")
     public String updateTask(@PathVariable("id") Long id, TaskDTO task, Model model) {
 
-        task.setId(id);
-        task.setTaskStatus(taskService.findById(id).getTaskStatus());
-        task.setAssignedDate(taskService.findById(id).getAssignedDate());
+//        task.setId(id);
+//        task.setTaskStatus(taskService.findById(id).getTaskStatus());
+//        task.setAssignedDate(taskService.findById(id).getAssignedDate());
         taskService.update(task); // or save() can be used
 
 
