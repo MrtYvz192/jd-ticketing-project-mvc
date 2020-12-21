@@ -72,7 +72,7 @@ public class TaskController {
     }
 
     @PostMapping("/update/{id}")
-    public String updateTask(@PathVariable("id") Long id, TaskDTO task, Model model) {
+    public String updateTask(@PathVariable("id") Long id, TaskDTO task) {
 
 //        task.setId(id);
 //        task.setTaskStatus(taskService.findById(id).getTaskStatus());

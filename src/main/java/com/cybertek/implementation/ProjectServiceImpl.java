@@ -47,4 +47,10 @@ public class ProjectServiceImpl extends AbstractMapService<ProjectDTO,String> im
         findById(project.getProjectCode()).setProjectStatus(Status.COMPLETE);
         findById(project.getProjectCode()).setEndDate(LocalDate.now());
     }
+
+//    @Override
+//    public List<ProjectDTO> managerProjects() {
+//        return findAll().stream().filter(project->project.getAssignedManager().equals() )
+//
+//    }
 }
