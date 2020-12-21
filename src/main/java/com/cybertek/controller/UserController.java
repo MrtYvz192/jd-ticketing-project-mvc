@@ -61,9 +61,6 @@ public class UserController {
         dataGenerator.userService.deleteById(username);
         dataGenerator.userService.update(user); // or save() can be used
 
-//        model.addAttribute("user",new UserDTO());
-//        model.addAttribute("roles", dataGenerator.roleService.findAll());
-//        model.addAttribute("users", dataGenerator.userService.findAll());
 
         return "redirect:/user/create";
     }

@@ -36,6 +36,6 @@ public class TaskServiceImpl extends AbstractMapService<TaskDTO,Long> implements
 
     @Override
     public void update(TaskDTO object) {
-
+        super.update(object.getId(), object);
     }
 }
