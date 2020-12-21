@@ -42,7 +42,6 @@
                                     <div class="form-group">
                                         <label for="project-select">Project</label>
                                         <select class="form-control" id="project-select"  th:field="*{project}" required="required">
-                                            <option th:value="''">Select</option>
                                             <option th:each="project:${projects}" th:value="${project.projectCode}"
                                                     th:text="${project.projectCode + '-' + project.projectName}" ></option>
 
