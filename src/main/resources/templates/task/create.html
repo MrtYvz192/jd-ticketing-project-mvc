@@ -123,7 +123,7 @@
                                         <td th:text="${task.taskStatus}"></td>
                                         <td>
                                             <a ><button type="button" class="btn btn-warning btn-sm" th:text="Update">Update</button></a>
-                                            <a > <button type="button" class="btn btn-danger btn-sm" th:text="Delete">Delete</button></a>
+                                            <a th:href="@{/task/delete/{id}(id=${task.id})}"> <button type="button" class="btn btn-danger btn-sm" th:text="Delete">Delete</button></a>
                                         </td>
                                     </tr>
                                     </tbody>
